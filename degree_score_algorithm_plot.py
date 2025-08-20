@@ -133,30 +133,24 @@ def handle_user_edge_addition(graph, current_scores):
 
 # ---
 
-if __name__ == "__main__":
-    while True:
-        try:
-            n_input = input("Enter the number of vertices (e.g., 10): ")
-            N_VERTICES = int(n_input)
-            if N_VERTICES >= 0:
-                break
-            else:
-                print("Error: Number of vertices cannot be negative.")
-        except ValueError:
-            print("Invalid input. Please enter a whole number.")
+def genereate_graph_and_display(N_VERTICES, M_EDGES):
+    """Generates a random graph based on user input and displays its state.
+    """
+    
+    if N_VERTICES < 0:
+        print("Error: Number of vertices cannot be negative.")
+        return
+    #except ValueError:
+    #    print("Invalid input. Please enter a whole number.")
             
     max_possible_edges = N_VERTICES * (N_VERTICES - 1) // 2
     
-    while True:
-        try:
-            m_input = input(f"Enter the number of edges (0 to {max_possible_edges}): ")
-            M_EDGES = int(m_input)
-            if 0 <= M_EDGES <= max_possible_edges:
-                break
-            else:
-                print(f"Error: Number of edges must be between 0 and {max_possible_edges}.")
-        except ValueError:
-            print("Invalid input. Please enter a whole number.")
+    
+    if not (0 <= M_EDGES <= max_possible_edges):
+        print(f"Error: Number of edges must be between 0 and {max_possible_edges}.")
+        return
+    #except ValueError:
+    #    print("Invalid input. Please enter a whole number.")
 
     G = generate_random_graph(N_VERTICES, M_EDGES)
     print(f"\n✅ Generated a random graph with {N_VERTICES} vertices and {M_EDGES} edges.")
@@ -173,6 +167,4 @@ if __name__ == "__main__":
     display_graph_state(G, updated_scores, updated_title)
     plot_graph_with_scores(G, updated_scores, updated_title)
     
-    handle_user_edge_addition(G, updated_scores)
-    
-    print("\nProcess finished. 👋")
+    print("\nGraph created. 👋")
