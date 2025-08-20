@@ -133,7 +133,7 @@ def handle_user_edge_addition(graph, current_scores):
 
 # ---
 
-def genereate_graph_and_display(N_VERTICES, M_EDGES):
+def generate_graph_and_display(N_VERTICES, M_EDGES):
     """Generates a random graph based on user input and displays its state.
     """
     
@@ -168,3 +168,4 @@ def genereate_graph_and_display(N_VERTICES, M_EDGES):
     plot_graph_with_scores(G, updated_scores, updated_title)
     
     print("\nGraph created. 👋")
+    return G, updated_scores
